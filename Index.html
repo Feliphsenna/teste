@@ -1,75 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Formulário de login com JavaScript</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
 	<style>
 		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			margin-top: 50px;
+			border: 2px solid black;
+			padding: 20px;
+			margin: 20px;
+			width: 300px;
 		}
-
-		input[type="text"], input[type="password"] {
-			padding: 10px;
-			margin-bottom: 20px;
-			border-radius: 5px;
-			border: none;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		input[type=text], input[type=password] {
+			margin: 5px;
+			padding: 5px;
+			width: 95%;
 		}
-
-		input[type="submit"] {
-			padding: 10px 20px;
+		input[type=submit] {
 			background-color: #4CAF50;
 			color: white;
+			padding: 10px 15px;
+			margin: 5px;
 			border: none;
 			border-radius: 5px;
 			cursor: pointer;
-			font-size: 16px;
-		}
-
-		input[type="submit"]:hover {
-			background-color: #3e8e41;
-		}
-
-		.error {
-			color: red;
-			margin-bottom: 10px;
 		}
 	</style>
 </head>
 <body>
-	<form id="login-form">
-		<label for="username">Usuário:</label>
-		<input type="text" id="username" name="username" required>
+	<form action="processa_login.php" method="post">
+		<label for="username"><b>Usuário:</b></label>
+		<input type="text" placeholder="Digite seu nome de usuário" name="username" required>
 
-		<label for="password">Senha:</label>
-		<input type="password" id="password" name="password" required>
+		<label for="password"><b>Senha:</b></label>
+		<input type="password" placeholder="Digite sua senha" name="password" required>
 
-		<input type="submit" value="Entrar">
+		<input type="hidden" name="admin" value="Admin">
+		<input type="hidden" name="senha_admin" value="1234">
+
+		<input type="submit" value="Login">
 	</form>
-
-	<script>
-		const form = document.getElementById('login-form');
-
-		form.addEventListener('submit', function(event) {
-			event.preventDefault();
-
-			const username = document.getElementById('username').value;
-			const password = document.getElementById('password').value;
-
-			if (username === 'Admin' && password === '1234') {
-				alert('Login realizado com sucesso!');
-				window.location.href = 'dashboard.html'; // redirecionar para a página de dashboard
-			} else {
-				const error = document.createElement('p');
-				error.classList.add('error');
-				error.innerText = 'Usuário ou senha incorretos.';
-				form.appendChild(error);
-			}
-		});
-	</script>
 </body>
 </html>
